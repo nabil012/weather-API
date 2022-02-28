@@ -1,38 +1,32 @@
-const API_Key=`49961806af8ef521903dff15451a4bc9`
 const error = document.getElementById('error')
 const searchBtn = () =>{
-      
- const cityField = document.getElementById('search-field')
- const city = cityField.value
- cityField.value=''
+  const cityField = document.getElementById('search-field')
+  const city = cityField.value
+  cityField.value = ''
 
-    const url =` https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_Key}&units=metric`;
-
+const API_Key=`49961806af8ef521903dff15451a4bc9`
+  const url =` https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_Key}&units=metric`;
+  
     fetch(url)
     .then(res => res.json())
     .then(data => displayWeather(data))
    
-   }
-//  }
+  }
+
+ 
+  
 const displayWeather = data =>{
- console.log(data)
- const degreeId = document.getElementById('celci')
- const cityName = document.getElementById('cityName')
- const weatherInfo = document.getElementById('weather')
+console.log(data)
+
+const degreeId = document.getElementById('celci')
+const cityName = document.getElementById('cityName')
+const weatherInfo = document.getElementById('weather')
+const weatherIcon = document.getElementById('weather-icon')
 degreeId.innerText = `${data.main.temp}`
 cityName.innerText = `${data.name}`
 weatherInfo.innerText = `${data.weather[0].main}`
-
- }
-
-
-
-
-
-
-
-
-
+weatherIcon.src = `https://openweathermap.org/img/wn/${data?.weather[0]?.icon}.png`
+}
 
 
 
